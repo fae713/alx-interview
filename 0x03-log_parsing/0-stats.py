@@ -60,4 +60,4 @@ try:
             print(f'{status_code}: {count}')
 
 except KeyboardInterrupt:
-    print("\nInterrupted by FAE.")
+    print("\n")
