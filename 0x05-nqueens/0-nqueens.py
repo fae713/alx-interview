@@ -46,9 +46,13 @@ class NQueen:
                 self.solve_n_queens(row + 1)  # Recur for next row
 
     def print_solutions(self):
-        """Print all found solutions."""
+        """
+        Print all found solutions.
+        """
         for solution in self.solutions:
-            print(solution)
+            # Convert the positions array into pairs of indices
+            queen_positions = [[i, col] for i, col in enumerate(solution)]
+            print(queen_positions)
 
 
 def main():
