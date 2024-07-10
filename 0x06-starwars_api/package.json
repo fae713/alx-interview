@@ -1,8 +1,23 @@
 {
+  "name": "starwars-characters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "semistandard",
+    "lint:fix": "semistandard --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "semistandard": "^16.0.1"
+  },
   "dependencies": {
     "axios": "^1.7.2",
     "got": "^14.4.1",
     "node-fetch": "^3.3.2",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "request": "^2.88.2"
   }
 }
