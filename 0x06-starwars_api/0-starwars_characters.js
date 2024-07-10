@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const request = require('request');
+const request = require('request-promise');
 const args = process.argv.slice(2);
 
 if (args.length === 0) {
@@ -10,24 +10,21 @@ if (args.length === 0) {
 
 const filmId = parseInt(args[0], 10);
 
-function fetchCharacters (filmId) {
-  const url = `https://swapi.dev/api/films/${filmId}/`;
-  request(url, { json: true }, (error, response, body) => {
-    if (error || !body.characters) {
-      console.error('Error fetching characters:', error);
-      return;
-    }
+async function fetchCharacters (filmId) {
+  try {
+    const url = `https://swapi.dev/api/films/${filmId}/`;
+    const filmResponse = await request({ uri: url, json: true });
 
-    body.characters.forEach(characterUrl => {
-      request(characterUrl, { json: true }, (err, res, charBody) => {
-        if (err || !charBody.name) {
-          console.error('Error fetching character details:', err);
-          return;
-        }
-        console.log(charBody.name);
-      });
+    const promises = filmResponse.characters.map(async (characterUrl) => {
+      const characterResponse = await request({ uri: characterUrl, json: true });
+      return characterResponse.name;
     });
-  });
+
+    const characterNames = await Promise.all(promises);
+    characterNames.forEach(name => console.log(name));
+  } catch (error) {
+    console.error('Error fetching characters:', error);
+  }
 }
 
 fetchCharacters(filmId);
