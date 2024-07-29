@@ -17,8 +17,8 @@ def pascal_triangle(n):
     Raises:
         ValueError: If n is less than or equal to zero.
     """
-    if not isinstance(n, int) or n <= 0:
-        raise ValueError("n must be a positive integer")
+    if n <= 0:
+        return []
 
     triangle = [[1]]
 
