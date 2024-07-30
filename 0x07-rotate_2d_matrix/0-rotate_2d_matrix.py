@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 """
-2D Matrix module
+A 2D matrix.
 """
-from typing import List, Any
 
 
-def rotate_2d_matrix(matrix: List[List[Any]]) -> None:
+def rotate_2d_matrix(matrix):
     """
-    A function that rotates an n x n 2D matrix
-    90 degrees clockwise.
+    This function rotates a 2D matrix 90 degrees clockwise.
     """
     if not isinstance(matrix, list) or len(matrix) == 0:
         return
