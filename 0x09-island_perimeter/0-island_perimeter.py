@@ -16,7 +16,7 @@ def island_perimeter(grid):
     cols = len(grid[0])
     perimeter = 0
 
-    # Directions: left, right, up, down
+    # Directions: up, down, left, right
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
     for i in range(rows):
