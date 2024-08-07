@@ -21,7 +21,7 @@ def isWinner(x, nums):
         to find all prime numbers up to n.
         """
         prime_num = [True] * (n + 1)
-        prime_num[0] = prime_num[1] = False
+        prime_num[0], prime_num[1] = False, False
         p = 2
         while p * p <= n:
             if prime_num[p]:
@@ -35,6 +35,9 @@ def isWinner(x, nums):
         Returns a list of primes up to n.
         """
         return [i for i in range(2, n + 1) if prime_num[i]]
+
+    if x < 1 or not nums:
+        return None
 
     max_num = max(nums)
     prime_num = SieveOfEratosthenes(max_num)
